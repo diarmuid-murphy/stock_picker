@@ -14,7 +14,7 @@ def stock_picker(stock_prices)
 	
 	# puts price_day_map.inspect}
 	puts "The lowest price, day: #{price_low_to_high.inspect}"
-	# puts "The highest price, day: #{price_high_to_low.inspect}"
+	puts "The highest price, day: #{price_high_to_low.inspect}"
 	
 	price_low_to_high.each do |price, day|
 		# print day.to_s + " "
@@ -23,19 +23,14 @@ def stock_picker(stock_prices)
 	
 	print "\n"
 	
+	# print price_high_to_low.max
 	puts price_high_to_low.max[0]
-	puts price_low_to_high[0][0]
+	puts price_high_to_low[0][1]
 	
-	# puts price_high_to_low[sell_date][sell_date]
-	
-	# puts price_high_to_low[0][0] - price_low_to_high[0][0]
-	
-	while price_high_to_low[0][0] == price_low_to_high.max[0]
-		price_high_to_low.delete_at(0)
+	while(price_high_to_low.max[0]) == (price_high_to_low[0][0]) do
+		price_high_to_low = price_high_to_low[1..-1]
+		print price_high_to_low.inspect
 	end
-	
-	puts price_high_to_low.max[0]
-	puts price_low_to_high[0][0]
 end
 
 # stock_picker([3,6,9,15,8,6,1,10])
