@@ -1,4 +1,8 @@
 def stock_picker(stock_prices)
+	buy_position = 0
+	sell_position = 0
+	highest_increase = 0
+	
 	price_day_map = Hash.new(0)
 	
 	stock_prices.each do |price|
@@ -8,14 +12,32 @@ def stock_picker(stock_prices)
 	price_low_to_high = price_day_map.sort
 	price_high_to_low = price_low_to_high.reverse
 	
-	# puts price_day_map.inspect
-	puts price_low_to_high.inspect
-	puts price_high_to_low.inspect
+	# puts price_day_map.inspect}
+	puts "The lowest price, day: #{price_low_to_high.inspect}"
+	# puts "The highest price, day: #{price_high_to_low.inspect}"
 	
 	price_low_to_high.each do |price, day|
-		puts price
-		puts day
+		# print day.to_s + " "
+		# puts "On day #{day} the price is #{price}"
 	end
+	
+	print "\n"
+	
+	puts price_high_to_low.max[0]
+	puts price_low_to_high[0][0]
+	
+	# puts price_high_to_low[sell_date][sell_date]
+	
+	# puts price_high_to_low[0][0] - price_low_to_high[0][0]
+	
+	while price_high_to_low[0][0] == price_low_to_high.max[0]
+		price_high_to_low.delete_at(0)
+	end
+	
+	puts price_high_to_low.max[0]
+	puts price_low_to_high[0][0]
 end
 
-stock_picker([17,3,6,9,15,8,6,1,10])
+# stock_picker([3,6,9,15,8,6,1,10])
+# stock_picker([35,1,2,3,4,5,8,9,9, 1])
+stock_picker([35,10,9,8,7,6,5,4,5,3,2,1])
